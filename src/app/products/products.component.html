@@ -1,0 +1,160 @@
+<!-- <h1>{{StoreName}}</h1>
+<img [src]="StoreLogo" alt="Store Logo" style="max-width: 12%;">
+<br> -->
+
+<!-- <h3>We offer an explicit discount of: {{Discount}}</h3> -->
+<!-- <h1>{{StoreName | uppercase}}</h1>
+<h3 *ngIf="Discount !== 'No Discount'">We offer an explicit discount of: {{Discount | lowercase}}</h3>
+<br>
+
+        <select class="btn btn-primary dropdown-toggle">
+            <option>CategoryList</option>
+            <option *ngFor="let category of CategoryList">{{category.Name}}</option>
+          </select>
+
+          <h3>Welcome {{ClientName}}</h3>
+          <br>
+          <br>
+          
+
+<br>
+<input type="text" class="form-control" style="width: 30%;" [(ngModel)]="ClientName" placeholder="Enter your name">
+<br>
+<br>
+
+
+<div *ngIf="!IsPurchased">
+   
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th  scope="col">ID</th>
+          <th  scope="col">Name</th>
+          <th  scope="col">Quantity</th>
+          <th  scope="col">Price</th>
+          <th  scope="col">Img</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of ProductList">
+          <th scope="row">{{product.ID}}</th>
+          <td>{{product.Name}}</td>
+          <td>{{product.Quantity}}</td>
+          <td>{{product.Price}}</td>
+          <td><img [src]="product.Img" class="rounded-circle" alt="Product Image" width="10%" ></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button (click)="togglePurchase()" class="btn btn-primary">Buy</button>
+
+<div  *ngIf="IsPurchased">
+  <p>Thanks for purchasing from our Store, {{ClientName}}!</p>
+</div>
+
+<br>
+
+<br>
+
+
+<ng-container *ngIf="IsPurchased; else notPurchasedTemplate">
+  <div>
+    <p>Thanks for purchasing from our Store {{ClientName}}!</p>
+  </div>
+</ng-container>
+
+<ng-template #notPurchasedTemplate>
+  <table>
+    <thead>
+      <tr>
+        <th  scope="col">ID</th>
+        <th  scope="col">Name</th>
+        <th  scope="col">Quantity</th>
+        <th  scope="col">Price</th>
+        <th  scope="col">Img</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of ProductList">
+        <th scope="row">{{product.ID}}</th>
+        <td>{{product.Name}}</td>
+        <td>{{product.Quantity}}</td>
+        <td>{{product.Price}}</td>
+        <td><img [src]="product.Img" class="rounded-circle" alt="Product Image" width="10%" ></td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>
+
+<br> -->
+
+
+<!-- <h2>Product Details</h2>
+<form (submit)="getProductById()">
+  <label>
+    Product ID:
+    <input type="number" name="productId" [(ngModel)]="productId">
+  </label>
+  <button type="submit">Get Product</button>
+</form>
+<br>
+<div *ngIf="selectedProduct">
+  <h3>{{ selectedProduct.Name }}</h3>
+  <p>Price: {{ selectedProduct.Price}}</p>
+</div>
+<button (click)="renderProductValues()">Display Data</button>
+<br>
+<br>
+<h2>List of Products</h2>
+<ul>
+  <li *ngFor="let product of products">{{ product.Name }}</li>
+</ul> -->
+
+
+<div class="input-group">
+  <span class="input-group-text">UserName</span>
+  <input type="text"  class="form-control" [(ngModel)]="ClientName">
+</div>
+<div [id]="textId">Wellcome {{ClientName}}</div>
+
+      <div class="card " style="width: 27rem;margin-left: 10px;">
+        <img [src]="StoreLogo" class="card-img-top" height="300px" alt="...">
+        <div class="card-body">
+          <h1 class="card-title">{{StoreName | uppercase}}</h1>
+          <p class="card-text">We offer an explicit discount of: <span *ngIf="isdiscount">{{Discount|percent}}</span></p>
+
+        </div>
+      </div>
+      <table class="table" *ngIf=" IsPurchased else elseBlock  "  >
+        <!-- ||this.productservice.showproducts  -->
+        <thead>
+          <tr >
+            <th scope="col">Name</th>
+            <th scope="col">price</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of ProductList" 
+          [class.bg-secondary]="selectedname==product.Name" (mousemove)="selectedname=product.Name"
+          >
+            <td >{{product?.Name}}</td>
+            <td >{{product.Price}}</td>
+            <td ><img src={{product.Img}} style="height: 100px;"/></td>
+            <td><button type="button" class="btn btn-danger float-end" (click)="Buyproduct()">Buy</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #elseBlock>
+        <h2>
+          Thanks for purchasing from our Store {{ClientName}}. 
+        </h2>
+    </ng-template> 
+    <ng-template #elseBlock2>
+      
+  </ng-template> 
+  <button class="btn btn-primary" (click)="WithDiscount()" >Products with discount</button>
+  <button class="btn btn-primary" style="margin: 20px;" (click)="WithoutDiscount()">Products without discount</button>
+
+  <router-outlet></router-outlet>
+          
